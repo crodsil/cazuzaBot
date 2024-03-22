@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CazuzaBot</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('backgground.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    #title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 120;
+      text-align: center;
+      font-size: 60px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0);
+      padding: 50px;
+      cursor: pointer; 
+    }
+
+    #signature {
+      position: absolute;
+      top: calc(50% + 90px); 
+      left: 50%;
+      transform: translateX(-50%);
+      font-style: italic;
+      font-size: 16px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0);
+      cursor: default; /* Evitar o cursor de clique */
+    }
+
+    #web-chat-container {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">CazuzaBot</h1>
+  <div id="signature">Developed By Cristiane Rodrigues</div>
+  <div id="web-chat-container">
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "26bc0ea5-1be3-487b-815b-7f90750a3d0d",
+        region: "au-syd",
+        serviceInstanceID: "0fdad375-4b60-4ad2-a507-9c02ece28fb3",
+        onLoad: function(instance) {
+          instance.render();
+        },
+        openChatByDefault: true,
+      };
+
+      document.getElementById("title").addEventListener("click", function() {
+        location.reload();
+      });
+      
+      setTimeout(function(){
+        const t = document.createElement('script');
+        t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.body.appendChild(t);
+      });
+    </script>
+  </div>
+</body>
+</html>
